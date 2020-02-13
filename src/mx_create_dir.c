@@ -5,6 +5,7 @@ t_dir *mx_create_dir() {
 
     dir->path = NULL;
     dir->lenght = 0;
+    dir->permission = 1;
     dir->files = NULL;
     return dir;
 }

@@ -13,4 +13,12 @@ void mx_clear_out(t_out *ip) {
         mx_strdel(&ip->nlink);
         ip->nlink = NULL;
     }
+    if (ip->sblocks != NULL) {
+        mx_strdel(&ip->sblocks);
+        ip->sblocks = NULL;
+    }
+    if (ip->name != NULL) {
+        mx_strdel(&ip->name);
+        ip->name = NULL;
+    }
 }

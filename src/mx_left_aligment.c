@@ -1,10 +1,10 @@
 #include "uls.h"
 
 void mx_left_aligment(char *str, int count) {
-    int len = mx_strlen(str);
+    int len = mx_strlen_unicode(str);
 
     if (len == count) {
-        mx_printstr(" ");
+        mx_printchar(' ');
         mx_printstr(str);
     }
     else {

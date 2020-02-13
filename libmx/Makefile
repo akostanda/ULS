@@ -8,6 +8,7 @@ FILES = mx_atoi \
 	mx_count_substr \
 	mx_count_words \
 	mx_create_datanode \
+	mx_create_lintnode \
 	mx_create_node \
 	mx_del_extra_spaces \
 	mx_del_strarr \
@@ -19,7 +20,9 @@ FILES = mx_atoi \
 	mx_hex_to_nbr \
 	mx_itoa \
 	mx_isdigit \
+	mx_islower \
 	mx_isspace \
+	mx_isupper \
 	mx_list_size \
 	mx_memccpy \
 	mx_memcmp \

@@ -5,7 +5,7 @@ int mx_check_is_folder(char *path) {
 
     if (lstat(path, &stat) == -1)
         return -1;
-    if (ISDIR(stat.st_mode))
+    if (MX_ISDIR(stat.st_mode))
         return 1;
     else
         return 0;

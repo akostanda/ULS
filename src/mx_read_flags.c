@@ -1,35 +1,24 @@
 #include "uls.h"
 
 static int check_flag(t_flags *flags, char flag) {
-    if (flag == 'R') {
-        flags->f_R = 1;
-    }
-    else if (flag == 'l') {
-        flags->detail = 1;
-    }
-    else if (flag == 'a') {
-        flags->def_dots = 1;
-        flags->def_file_dots = 1;
-    }
-    else if (flag == 'A') {
-        flags->def_file_dots = 1;
-    }
-    else
-        return 1;
-    return 0;
+    if (mx_isupper(flag) || flag == '1')
+        return mx_check_upper_flag(flags, flag);
+    else if (mx_islower(flag))
+        return mx_check_lower_flag(flags, flag);
+    return 1;
 }
 
-void mx_read_flags(t_uls *uls, int argc, char **argv) {
+void mx_read_flags(t_uls *uls, char *arg) {
     t_flags *flags = uls->flags;
     unsigned int len = 0;
+    char err[2] = " \0";
 
-    for (int i = 0; i < argc; i++) {
-        if (argv[i][0] == '-' && mx_strcmp("-\0", argv[i]) != 0) {
-            len = mx_strlen(argv[i]);
-            for (unsigned int j = 1; j < len; j++) {
-                if (check_flag(flags, argv[i][j]))
-                    mx_print_error(ERROR_USAGE, NULL, NULL);
-            }
+    len = mx_strlen(arg);
+    for (unsigned int i = 1; i < len; i++) {
+        if (check_flag(flags, arg[i])) {
+            err[0] = arg[i];
+            mx_print_warning(MX_ERR_OPTION, err, "\n");
+            mx_print_error(MX_ERR_USAGE, NULL, NULL);
         }
     }
 }

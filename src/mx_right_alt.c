@@ -1,7 +1,7 @@
 #include "uls.h"
 
 void mx_right_alt(char *str, int count) {
-    int len = mx_strlen(str);
+    int len = mx_strlen_unicode(str);
 
     if (len == count) {
         mx_printchar(' ');
