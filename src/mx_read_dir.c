@@ -2,12 +2,11 @@
 
 static void dir_sort_condition(t_dir *dir, t_flags *flags) {
     if (!flags->f_f) {
+        mx_sort_files_by_ascii(dir->files, dir->lenght);
         if (flags->f_ss)
             mx_sort_files_by_size(dir->files, dir->lenght);
         else if (flags->f_t)
             mx_sort_files_by_time(dir->files, dir->lenght, flags);
-        else
-            mx_sort_files_by_ascii(dir->files, dir->lenght);
         if (flags->f_r)
             mx_reverse_files(dir->files, dir->lenght);
     }

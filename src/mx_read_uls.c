@@ -28,22 +28,20 @@ static void push_dot(t_uls *uls, t_out *ip) {
 
 static void uls_sort_condition(t_uls *uls) {
     if (uls->files && !uls->flags->f_f) {
+        mx_sort_files_by_ascii(uls->files, uls->files_count);
         if (uls->flags->f_ss)
             mx_sort_files_by_size(uls->files, uls->files_count);
         else if (uls->flags->f_t)
             mx_sort_files_by_time(uls->files, uls->files_count, uls->flags);
-        else
-            mx_sort_files_by_ascii(uls->files, uls->files_count);
         if (uls->flags->f_r)
             mx_reverse_files(uls->files, uls->files_count);
     } 
     if (uls->dirs && !uls->flags->f_f) {
+        mx_sort_dirs_by_ascii(uls->dirs, uls->dirs_count);
         if (uls->flags->f_ss)
             mx_sort_dirs_by_size(uls->dirs, uls->dirs_count);
         else if (uls->flags->f_t)
             mx_sort_dirs_by_time(uls->dirs, uls->dirs_count, uls->flags);
-        else
-            mx_sort_dirs_by_ascii(uls->dirs, uls->dirs_count);
         if (uls->dirs && uls->flags->f_r)
             mx_reverse_dirs(uls->dirs, uls->dirs_count);
     }
